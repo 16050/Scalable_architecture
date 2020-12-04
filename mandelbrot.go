@@ -27,6 +27,7 @@ var (
 
 var waitGroup sync.WaitGroup
 
+//Ca c'est les valeurs par défauts des variables
 func init() {
 	flag.Float64Var(&colorStep, "step", 6000, "Color smooth step. Value should be greater than iteration count, otherwise the value will be adjusted to the iteration count.")
 	flag.IntVar(&width, "width", 1024, "Rendered image width")
@@ -41,6 +42,7 @@ func init() {
 	flag.Parse()
 }
 
+//Ca c'est le truc qui run
 func main() {
 	done := make(chan struct{})
 	ticker := time.NewTicker(time.Millisecond * 100)
@@ -69,6 +71,7 @@ func main() {
 	time.Sleep(time.Second)
 }
 
+//Ca c'est pour donner une couleur à chaque itération
 func interpolateColors(paletteCode *string, numberOfColors float64) []color.RGBA {
 	var factor float64
 	steps := []float64{}
@@ -129,6 +132,7 @@ func interpolateColors(paletteCode *string, numberOfColors float64) []color.RGBA
 	return interpolatedColors
 }
 
+//Ca construit le fichier image (format png)
 func render(maxIteration int, colors []color.RGBA, done chan struct{}) {
 	width = width * imageSmoothness
 	height = height * imageSmoothness
@@ -195,6 +199,7 @@ func mandelIteration(cx, cy float64, maxIter int) (float64, int) {
 	return logZn, maxIter
 }
 
+//Converti une couleur en un entier
 func rgbaToUint(color color.RGBA) uint32 {
 	r, g, b, a := color.RGBA()
 	r /= 0xff
@@ -204,6 +209,7 @@ func rgbaToUint(color color.RGBA) uint32 {
 	return uint32(r)<<24 | uint32(g)<<16 | uint32(b)<<8 | uint32(a)
 }
 
+//Converti un entier en une couleur
 func uint32ToRgba(col uint32) color.RGBA {
 	r := col >> 24 & 0xff
 	g := col >> 16 & 0xff
