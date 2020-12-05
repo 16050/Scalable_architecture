@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/esimov/gobrot/palette"
+	"palette"
 )
 
 var (
@@ -57,7 +57,7 @@ func main() {
 				fmt.Print(".")
 			case <-done:
 				ticker.Stop()
-				fmt.Printf("\n\nMandelbrot setYYYYY rendered into `%s`\n", outputFile)
+				fmt.Printf("\n\nMandelbrot set rendered into `%s`\n", outputFile)
 			}
 		}
 	}()
@@ -68,12 +68,12 @@ func main() {
 	colors := interpolateColors(&colorPalette, colorStep)
 
 	if len(colors) > 0 {
-		fmt.Print("Rendering imageYYbhhherhrYY...")
+		fmt.Print("Rendering image...")
 		render(maxIteration, colors, done)
 	}
 
 	elapsed := time.Since(start)
-	log.Printf("Process took %s", elapsed)
+	log.Printf("Process mandelbrot took %s", elapsed)
 	time.Sleep(time.Second)
 }
 
