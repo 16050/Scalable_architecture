@@ -24,7 +24,7 @@ Running `$ go run mandelbrot.go` will produce the following image:
 ![sample](https://raw.githubusercontent.com/esimov/gobrot/master/images/test5.jpg)
 
 ```
-$ gobrot --help
+$ go run mandelbrot.go --help
 
 Usage of gobrot:
   -file string
