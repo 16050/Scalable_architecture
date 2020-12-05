@@ -138,9 +138,8 @@ func interpolateColors(paletteCode *string, numberOfColors float64) []color.RGBA
 	return interpolatedColors
 }
 
-//Ca construit le fichier image (format png)
 func render(maxIteration int, colors []color.RGBA, done chan struct{}) {
-	width = width * imageSmoothness
+	width = width * imageSmoothness				//résolution de l'image
 	height = height * imageSmoothness
 	ratio := float64(height) / float64(width)
 	xmin, xmax := xpos-escapeRadius/2.0, math.Abs(xpos+escapeRadius/2.0)
@@ -148,8 +147,8 @@ func render(maxIteration int, colors []color.RGBA, done chan struct{}) {
 
 	image := image.NewRGBA(image.Rectangle{image.Point{0, 0}, image.Point{width, height}})
 
-	for iy := 0; iy < height; iy++ {
-		waitGroup.Add(1)
+	for iy := 0; iy < height; iy++ {			//Iteration over the 2 dimensional array defined as a 2d system coordinate and
+		waitGroup.Add(1)						//applying the mathematical calculation prior to generate the mandelbrot set
 		go func(iy int) {
 			defer waitGroup.Done()
 
@@ -187,6 +186,7 @@ func linearInterpolation(c1, c2, mu uint32) uint32 {
 	return c1*(1-mu) + c2*mu
 }
 
+//Mandelbrot function z_{n+1} = z_n^2 + c
 func mandelIteration(cx, cy float64, maxIter int) (float64, int) {
 	var x, y, xx, yy float64 = 0.0, 0.0, 0.0, 0.0
 
