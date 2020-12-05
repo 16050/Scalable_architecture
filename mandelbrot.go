@@ -68,7 +68,7 @@ func main() {
 	colors := interpolateColors(&colorPalette, colorStep)
 
 	if len(colors) > 0 {
-		fmt.Print("Rendering imageYYYY...")
+		fmt.Print("Rendering imageYYbhhherhrYY...")
 		render(maxIteration, colors, done)
 	}
 
