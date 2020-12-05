@@ -1,4 +1,4 @@
-# gobrot
+# mandelbrot
 
 Gobrot is a mandelbrot image renderer written in Go. The renderer takes advantage of Go's concurrent and parallel programming feature known as *goroutine*.
 
@@ -8,8 +8,7 @@ Treating the real and imaginary parts of each number as image coordinates, pixel
 
 ### Install
 ```
-$ go get github.com/esimov/gobrot
-$ go install
+$ git clone https://github.com/16050/mandelbrot
 ```
 
 Before to run the code you need to include the project into the `GOPATH` environment variable. 
@@ -20,7 +19,7 @@ $ export PATH="$PATH:$GOPATH/bin"
 See the documentation: https://golang.org/doc/code.html#GOPATH
 
 ### Run
-Running `$ gobrot` will produce the following image:
+Running `$ go run mandelbrot.go` will produce the following image:
 
 ![sample](https://raw.githubusercontent.com/esimov/gobrot/master/images/test5.jpg)
 
@@ -54,19 +53,19 @@ Usage of gobrot:
 Here are some options you can try out. (The attached images are generated using the below commands.)
 
 ```
-$ gobrot -palette "Hippi" -xpos -0.0091275 -ypos 0.7899912 -radius .01401245 -file "mandelbrot.png"
+$ go run mandelbrot.go -palette "Hippi" -xpos -0.0091275 -ypos 0.7899912 -radius .01401245 -file "mandelbrot.png"
 ```
 ```
-$ gobrot -palette "Plan9" -xpos -0.0091275 -ypos 0.7899912 -radius .01401245 -file "test2.png" -iteration 600 -step 600
+$ go run mandelbrot.go -palette "Plan9" -xpos -0.0091275 -ypos 0.7899912 -radius .01401245 -file "test2.png" -iteration 600 -step 600
 ```
 ```
-$ gobrot -palette "Vivid" -xpos -0.00991275 -ypos 0.7899912 -radius .02401245 -file "test3.png" -iteration 800 -step 600 -smoothness 10 -width 1920 -height 1080
+$ go run mandelbrot.go -palette "Vivid" -xpos -0.00991275 -ypos 0.7899912 -radius .02401245 -file "test3.png" -iteration 800 -step 600 -smoothness 10 -width 1920 -height 1080
 ```
 ```
-$ gobrot -palette "Hippi" -xpos -0.00275 -ypos 1.012 -radius .089999 -file "test4.png" -iteration 800 -step 600 -smoothness 10 -width 1920 -height 1080
+$ go run mandelbrot.go -palette "Hippi" -xpos -0.00275 -ypos 1.012 -radius .089999 -file "test4.png" -iteration 800 -step 600 -smoothness 10 -width 1920 -height 1080
 ```
 ```
-$ gobrot -palette "Hippi" -xpos -0.00275 -ypos 0.78912 -radius .1256789 -file "test5.png" -iteration 800 -step 6000 -smoothness 10 -width 1920 -height 1080
+$ go run mandelbrot.go -palette "Hippi" -xpos -0.00275 -ypos 0.78912 -radius .1256789 -file "test5.png" -iteration 800 -step 6000 -smoothness 10 -width 1920 -height 1080
 ```
 
 By combining `-palette`, `-iteration` and `-step` values you can obtain differently colorized mandelbrot sets.
