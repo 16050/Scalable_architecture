@@ -6,6 +6,7 @@ import (
 	"image"
 	"image/color"
 	"image/png"
+	"log"
 	"math"
 	"os"
 	"sync"
@@ -44,6 +45,8 @@ func init() {
 
 //Ca c'est le truc qui run
 func main() {
+	start := time.Now()
+
 	done := make(chan struct{})
 	ticker := time.NewTicker(time.Millisecond * 100)
 
@@ -68,6 +71,9 @@ func main() {
 		fmt.Print("Rendering imageYYYY...")
 		render(maxIteration, colors, done)
 	}
+
+	elapsed := time.Since(start)
+	log.Printf("Process took %s", elapsed)
 	time.Sleep(time.Second)
 }
 
